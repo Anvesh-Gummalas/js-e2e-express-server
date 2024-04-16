@@ -30,6 +30,7 @@ steps:
   displayName: 'Copy project files'
 
 - task: PublishPipelineArtifact@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   inputs:
     artifactName: e2e-express-server
     targetPath: '$(Build.ArtifactStagingDirectory)'
